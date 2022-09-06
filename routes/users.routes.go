@@ -12,6 +12,9 @@ import (
 func GetUsersHandler(w http.ResponseWriter, r *http.Request) {
 	var users []models.User
 	db.DB.Find(&users)
+
+	db.DB.Preload("Tasks").Find(&users)
+
 	json.NewEncoder(w).Encode(&users)
 }
 

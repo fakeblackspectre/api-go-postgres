@@ -55,7 +55,7 @@ func DeleteTaskHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// db.DB.Delete(&user) // change status to deleted, adding the delete date to the user
+	// db.DB.Delete(&user) // change status to deleted, adding the delete date to the task
 	db.DB.Unscoped().Delete(&task) // remove from table
 	w.WriteHeader(http.StatusOK)
 }
